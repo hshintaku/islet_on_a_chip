@@ -7,10 +7,10 @@ library(destiny)
 #
 # first run
 #fstseq <- read.csv("/home/watson/sanger/shintaku/islet/nashimoto_2021.csv",sep = ";",row.names = 1)
-fstseq<-Read10X(data.dir = "/home/samba/watson_SeqData/2021Islet/20211124HiSeqX006_Islet/",gene.column = 1)
+fstseq<-Read10X(data.dir = "/home/samba/watson_SeqData/2021Islet_ProfNashimoto/20211124HiSeqX006_Islet/",gene.column = 1)
 # detect rat genes
 ratgene<-substr(fstseq@Dimnames[[1]],1,4)=="ENSR"
-fstseq<-Read10X(data.dir = "/home/samba/watson_SeqData/2021Islet/20211124HiSeqX006_Islet/")
+fstseq<-Read10X(data.dir = "/home/samba/watson_SeqData/2021Islet_ProfNashimoto/20211124HiSeqX006_Islet/")
 fstmeta<- data.frame(read_xlsx("/home/samba/public/shintaku/islet/cellid_list_culture_1st_seq_230210mod.xlsx"))
 rownames(fstmeta)<-fstmeta$cellid
 # Create Seurat object with rat genes
@@ -19,10 +19,10 @@ fst.seurat <-CreateSeuratObject(fstseq[ratgene,fstmeta$cellid])
 #
 # second run
 #sndseq <-read.csv("/home/watson/sanger/shintaku/islet/nashimoto_2022.csv",sep = ";",row.names = 1)
-sndseq<-Read10X(data.dir="/home/samba/public/shintaku/20220922HiSeqX015_islet/",gene.column = 1)
+sndseq<-Read10X(data.dir="/home/samba/watson_SeqData/2021Islet_ProfNashimoto/20220922HiSeqX015_islet/",gene.column = 1)
 # detect rat genes
 ratgene<-substr(sndseq@Dimnames[[1]],1,4)=="ENSR"
-sndseq<-Read10X(data.dir="/home/samba/public/shintaku/20220922HiSeqX015_islet/")
+sndseq<-Read10X(data.dir="/home/samba/watson_SeqData/2021Islet_ProfNashimoto/20220922HiSeqX015_islet/")
 sndmeta<- data.frame(read_xlsx("/home/samba/public/shintaku/islet/cellid_list_culture_2nd_seq_230210.xlsx"))
 #
 # convert barcodes to numbers
